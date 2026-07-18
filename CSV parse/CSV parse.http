@@ -1,0 +1,35 @@
+@CSV_parse_HostAddress = http://localhost:5211
+
+POST {{CSV_parse_HostAddress}}/api/csv/upload
+Content-Type: multipart/form-data; boundary=CsvBoundary
+
+--CsvBoundary
+Content-Disposition: form-data; name="file"; filename="sample.csv"
+Content-Type: text/csv
+
+Date;ExecutionTime;Value
+2024-01-01T12-30-45.1234Z;10.5;42.7
+2024-01-01T12-31-45.1234Z;15;44.1
+--CsvBoundary--
+
+###
+
+GET {{CSV_parse_HostAddress}}/api/results
+Accept: application/json
+
+###
+
+GET {{CSV_parse_HostAddress}}/api/results?fileName=sample.csv
+Accept: application/json
+
+###
+
+GET {{CSV_parse_HostAddress}}/api/results?firstOperationDateFrom=2024-01-01T00:00:00Z&firstOperationDateTo=2024-12-31T23:59:59Z&averageValueFrom=40&averageValueTo=50&averageExecutionTimeFrom=5&averageExecutionTimeTo=20
+Accept: application/json
+
+###
+
+GET {{CSV_parse_HostAddress}}/api/values/latest?fileName=sample.csv
+Accept: application/json
+
+###

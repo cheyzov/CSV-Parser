@@ -1,0 +1,22 @@
+# Build output
+bin/
+obj/
+build-check*/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.rsuser
+
+# Rider / JetBrains
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# OS files
+Thumbs.db
+.DS_Store
